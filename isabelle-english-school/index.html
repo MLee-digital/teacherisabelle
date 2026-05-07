@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruby English Academy | Isabelle Luiza</title>
+    
+    <!-- SEO & Icons -->
+    <meta name="description" content="Aprenda inglês com autoridade na Ruby English Academy. Metodologia personalizada para adultos e crianças.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Prata&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #D3614E; /* Terracota */
@@ -15,75 +19,181 @@
             --text: #2D2D2D;
             --light-bg: #F4F0E8;
         }
+
+        /* Reset & Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3 { font-family: 'Prata', serif; color: var(--secondary); line-height: 1.2; }
-        
+        a { text-decoration: none; transition: 0.3s; }
+
         /* HEADER */
-        header { background: white; padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { color: var(--text); font-size: 13px; font-weight: 600; text-decoration: none; }
-        
-        .btn-red { 
-            background: var(--primary); color: white; padding: 12px 25px; border-radius: 50px; 
-            font-weight: 700; font-size: 13px; border: none; cursor: pointer; text-decoration: none;
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--secondary); font-family: 'Prata', serif; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--text); font-size: 13px; font-weight: 600; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-cta {
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
-        .btn-red:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(211, 97, 78, 0.3); }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(211, 97, 78, 0.3); }
 
-        /* BIO */
+        /* BADGES */
+        .badge {
+            background: #FDECEA;
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* HERO / BIO */
         .section-padding { padding: 100px 0; }
-        .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .bio-img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .stats-float { display: flex; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); width: fit-content; margin-top: -50px; position: relative; z-index: 10; gap: 30px; }
-        .stat-item h4 { color: var(--primary); font-size: 24px; }
-        .stat-item p { font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .bio-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+        .bio-image-wrapper { position: relative; }
+        .bio-img { width: 100%; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); }
+        
+        .stats-float {
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            background: white;
+            padding: 25px 40px;
+            border-radius: 20px;
+            display: flex;
+            gap: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .stat-item { text-align: center; }
+        .stat-item h4 { color: var(--primary); font-size: 26px; margin-bottom: 2px; }
+        .stat-item p { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #999; }
+
+        .bio-content h2 { font-size: 3.5rem; margin-bottom: 25px; }
+        .bio-content p { font-size: 18px; color: #555; margin-bottom: 20px; }
 
         /* SERVICES */
         .services-section { background: var(--light-bg); }
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
-        .card { background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .card-img { width: 100%; height: 280px; object-fit: cover; }
-        .card-body { padding: 40px; }
-        .card-list { list-style: none; margin: 20px 0; }
-        .card-list li { margin-bottom: 12px; font-size: 14px; display: flex; align-items: center; }
-        .card-list li::before { content: '✓'; color: var(--primary); margin-right: 10px; font-weight: 800; border: 1.5px solid var(--primary); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 20px; }
+        
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .card { background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card-img { width: 100%; height: 320px; object-fit: cover; }
+        .card-body { padding: 45px; }
+        
+        .card-list { list-style: none; margin: 25px 0; }
+        .card-list li { margin-bottom: 12px; font-size: 15px; display: flex; align-items: center; }
+        .card-list li::before { 
+            content: '✓'; color: var(--primary); font-weight: 800; border: 2px solid var(--primary); 
+            border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; 
+            justify-content: center; font-size: 11px; margin-right: 15px; flex-shrink: 0;
+        }
 
         /* RESOURCES */
-        .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
-        .res-card { background: white; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid #eee; }
-        .res-card img { height: 150px; object-fit: contain; margin-bottom: 15px; width: 100%; }
+        .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px; }
+        .res-card { background: white; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid #f0f0f0; transition: 0.3s; }
+        .res-card:hover { border-color: var(--primary); }
+        .res-card img { height: 160px; object-fit: contain; margin-bottom: 20px; width: 100%; }
+        .res-card h4 { font-size: 17px; margin-bottom: 10px; }
+        .res-price { color: var(--primary); font-weight: 700; margin-bottom: 15px; display: block; }
 
         /* TESTIMONIALS */
-        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-        .test-card { background: white; padding: 40px; border-radius: 25px; border: 1px solid #eee; }
-        .test-text { font-style: italic; margin-bottom: 25px; color: #555; font-size: 15px; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+        .test-card { background: white; padding: 45px; border-radius: 30px; border: 1px solid #eee; position: relative; height: 100%; }
+        .test-card i.fa-quote-left { color: var(--primary); font-size: 24px; opacity: 0.2; margin-bottom: 20px; display: block; }
+        .test-text { font-style: italic; color: #555; margin-bottom: 30px; font-size: 15px; line-height: 1.8; }
         .user-info { display: flex; align-items: center; gap: 15px; }
-        .avatar { width: 45px; height: 45px; background: #eee; border-radius: 50%; }
+        .user-avatar { width: 50px; height: 50px; background: var(--light-bg); border-radius: 50%; }
 
         /* CONTACT */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
-        .contact-box { background: var(--secondary); color: white; padding: 50px; border-radius: 30px; }
-        .contact-form { background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-        .form-input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; }
+        .contact-section { background: #FDFBFF; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+        .contact-box { background: var(--secondary); color: white; padding: 60px; border-radius: 40px; }
+        .contact-box h2 { color: white; font-size: 2.8rem; margin-bottom: 25px; }
+        
+        .contact-form { background: white; padding: 60px; border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); }
+        .form-input { 
+            width: 100%; padding: 18px; margin-bottom: 20px; border: 1px solid #eee; 
+            border-radius: 15px; background: #f9f9f9; font-family: inherit; font-size: 15px;
+        }
+        .form-input:focus { outline: none; border-color: var(--primary); background: white; }
 
         /* FOOTER */
-        footer { background: #0F172A; color: white; padding: 80px 0 40px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
-        .social-links { display: flex; gap: 15px; margin-top: 25px; }
-        .social-btn { width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; transition: 0.3s; }
-        .social-btn:hover { background: var(--primary); transform: translateY(-3px); }
+        footer { background: #0F172A; color: white; padding: 100px 0 50px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 60px; }
+        .footer-logo { font-family: 'Prata', serif; font-size: 1.8rem; margin-bottom: 20px; }
+        .footer-links { list-style: none; margin-top: 20px; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 14px; }
+        .footer-links a:hover { color: var(--primary); }
 
-        /* QUIZ */
-        #quiz-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .quiz-content { background: white; padding: 50px; border-radius: 30px; max-width: 500px; width: 90%; text-align: center; }
-        .quiz-opt { width: 100%; padding: 15px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 12px; cursor: pointer; font-weight: 600; }
-        .quiz-opt:hover { background: var(--light-bg); border-color: var(--primary); }
+        .social-links { display: flex; gap: 15px; margin-top: 30px; }
+        .social-btn { 
+            width: 48px; height: 48px; background: rgba(255,255,255,0.08); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            color: white; font-size: 20px; 
+        }
+        .social-btn:hover { background: var(--primary); transform: translateY(-5px); }
 
-        @media (max-width: 992px) { .bio-grid, .services-grid, .testimonials-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; } .nav-links { display: none; } .resource-grid { grid-template-columns: 1fr 1fr; } }
+        /* QUIZ MODAL */
+        #quiz-modal { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); z-index: 2000; display: none; 
+            align-items: center; justify-content: center; backdrop-filter: blur(10px);
+        }
+        .quiz-content { 
+            background: white; padding: 60px; border-radius: 40px; 
+            max-width: 600px; width: 90%; text-align: center; position: relative;
+        }
+        .close-quiz { position: absolute; top: 25px; right: 30px; font-size: 28px; cursor: pointer; color: #ddd; }
+        .quiz-option { 
+            width: 100%; padding: 18px; margin-bottom: 12px; border: 1px solid #eee; 
+            border-radius: 15px; cursor: pointer; font-weight: 700; font-size: 15px;
+            transition: 0.3s;
+        }
+        .quiz-option:hover { background: var(--light-bg); border-color: var(--primary); }
+
+        /* MOBILE */
+        @media (max-width: 992px) {
+            .bio-grid, .services-grid, .testimonials-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .stats-float { position: static; margin-top: 30px; width: 100%; justify-content: center; }
+            .resource-grid { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -92,128 +202,187 @@
         <div class="container nav-flex">
             <div class="logo">Ruby English Academy</div>
             <nav class="nav-links">
-                <button onclick="toggleQuiz(true)" class="btn-red" style="padding: 10px 20px;">Teste Seu Nível</button>
-                <a href="#sobre">Sobre</a>
+                <button onclick="toggleQuiz(true)" class="btn-cta" style="background: var(--secondary);">Teste Seu Nível</button>
+                <a href="#sobre">A Escola</a>
                 <a href="#servicos">Cursos</a>
-                <a href="#depoimentos">Alunos</a>
+                <a href="#depoimentos">Depoimentos</a>
                 <a href="#contato">Contato</a>
-                <a href="https://wa.me/5511930811113" target="_blank" class="btn-red">Aula Experimental Grátis</a>
+                <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta">Aula Experimental</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- BIO SECTION -->
         <section id="sobre" class="section-padding">
             <div class="container">
                 <div class="bio-grid">
-                    <div class="bio-visual">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" class="bio-img">
+                    <div class="bio-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Isabelle Luiza" class="bio-img">
                         <div class="stats-float">
                             <div class="stat-item"><h4>5+</h4><p>Anos EXP</p></div>
                             <div class="stat-item"><h4>100+</h4><p>Alunos</p></div>
-                            <div class="stat-item"><h4>500+</h4><p>Aulas</p></div>
+                            <div class="stat-item"><h4>500+</h4><p>Horas Aula</p></div>
                         </div>
                     </div>
-                    <div class="bio-text">
-                        <span style="color: var(--primary); font-weight: 700; letter-spacing: 2px;">ESTABLISHED ACADEMY</span>
-                        <h1 style="font-size: 3.5rem; margin: 20px 0;">Ruby English Academy</h1>
-                        <p style="font-size: 18px; color: #555; margin-bottom: 20px;">Sob a liderança de <strong>Isabelle Luiza</strong>, a Ruby nasceu para elevar o padrão do ensino de idiomas. Com trajetória sólida em grandes instituições, Isabelle traz o rigor acadêmico com um atendimento humano.</p>
-                        <p style="color: #777;">Hoje, como Professora Autorizada, ela coordena uma metodologia focada em fluência real e confiança profissional.</p>
-                        <div style="margin-top: 40px;"><a href="https://wa.me/5511930811113" target="_blank" class="btn-red" style="padding: 15px 35px;">Falar com a Teacher</a></div>
+                    <div class="bio-content">
+                        <span class="badge">Instituição de Excelência</span>
+                        <h2>Liderança Pedagógica e Autoridade</h2>
+                        <p>Sob a coordenação de <strong>Isabelle Luiza</strong>, a Ruby English Academy nasceu para elevar o padrão do ensino de idiomas. Com uma trajetória sólida de atuação CLT em duas grandes escolas de renome nacional, Isabelle traz a bagagem necessária para gerir uma academia de luxo.</p>
+                        <p style="color: #777;">Sua experiência internacional e certificação profissional garantem uma metodologia que une o rigor acadêmico à fluência prática que o mercado de alta performance exige.</p>
+                        <div style="margin-top: 40px;">
+                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta" style="padding: 16px 40px;">Entrar em Contato</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SERVICES SECTION -->
         <section id="servicos" class="section-padding services-section">
             <div class="container">
-                <div style="text-align: center; margin-bottom: 60px;">
-                    <h2 style="font-size: 3rem;">Nossos Programas</h2>
-                    <p>Metodologia adaptada para cada fase da sua jornada.</p>
+                <div class="section-header">
+                    <span class="badge">Nossa Metodologia</span>
+                    <h2>Programas de Imersão</h2>
+                    <p>Foco na fluência natural, seja para conquistar o mercado corporativo global ou para dar os primeiros passos com segurança e diversão.</p>
                 </div>
                 <div class="services-grid">
+                    <!-- KIDS -->
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" class="card-img">
                         <div class="card-body">
                             <h3>English for Kids</h3>
-                            <p style="color: #666; margin: 15px 0;">Aprendizado lúdico e natural para crianças de 4 a 12 anos.</p>
+                            <p style="color: #666; margin-bottom: 20px;">Aprendizado lúdico para crianças de 4 a 12 anos. Onde o inglês se torna uma descoberta natural.</p>
                             <ul class="card-list">
-                                <li>Atividades 100% Lúdicas</li>
-                                <li>Foco em Escuta e Fala</li>
-                                <li>Metodologia Divertida</li>
+                                <li>Atividades 100% Lúdicas e Gamificadas</li>
+                                <li>Desenvolvimento Cognitivo e Social</li>
+                                <li>Materiais Importados e Exclusivos</li>
+                                <li>Aulas Dinâmicas e Imersivas</li>
                             </ul>
-                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-red" style="display: block; text-align: center;">Quero para meu filho</a>
+                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta" style="width: 100%; text-align: center;">Inscrições Abertas</a>
                         </div>
                     </div>
+                    <!-- ADULTS -->
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" class="card-img">
                         <div class="card-body">
                             <h3>Adults & Business</h3>
-                            <p style="color: #666; margin: 15px 0;">Inglês estratégico para carreira, viagens e entrevistas.</p>
+                            <p style="color: #666; margin-bottom: 20px;">Para profissionais que não podem perder tempo e buscam se comunicar com autoridade global.</p>
                             <ul class="card-list">
-                                <li>Business English</li>
-                                <li>Preparação para Entrevistas</li>
-                                <li>Conversação Fluente</li>
+                                <li>Business English e Termos Corporativos</li>
+                                <li>Preparação para Entrevistas Internacionais</li>
+                                <li>Aperfeiçoamento de Pronúncia e Escuta</li>
+                                <li>Foco Total em Conversação Prática</li>
                             </ul>
-                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-red" style="display: block; text-align: center;">Quero ser Fluente</a>
+                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta" style="width: 100%; text-align: center;">Quero ser Fluente</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="recursos" class="section-padding">
+        <!-- TEACHER PICKS -->
+        <section class="section-padding">
             <div class="container">
-                <div style="text-align: center; margin-bottom: 50px;">
-                    <h2 style="font-size: 2.5rem;">Teacher's Picks</h2>
-                    <p>Recursos recomendados para potencializar seus estudos.</p>
+                <div class="section-header">
+                    <span class="badge">Curadoria Ruby</span>
+                    <h2>Teacher's Picks</h2>
+                    <p>Recursos selecionados pessoalmente para acelerar seu aprendizado fora da sala de aula.</p>
                 </div>
                 <div class="resource-grid">
-                    <div class="res-card"><img src="https://images-na.ssl-images-amazon.com/images/I/81shT7zM5tL.jpg"><h4>Grammar in Use</h4><span class="res-price">R$ 89,90</span></div>
-                    <div class="res-card"><img src="https://m.media-amazon.com/images/I/81-f761mXRL._AC_UF1000,1000_QL80_.jpg"><h4>Fluent Forever</h4><span class="res-price">R$ 59,90</span></div>
-                    <div class="res-card"><img src="https://m.media-amazon.com/images/I/41-l8l6V7jL._AC_UF1000,1000_QL80_.jpg"><h4>Business English</h4><span class="res-price">R$ 129,90</span></div>
-                    <div class="res-card"><img src="https://m.media-amazon.com/images/I/61S4h2a+JRL._AC_SL1500_.jpg"><h4>Headset Pro</h4><span class="res-price">R$ 199,90</span></div>
+                    <div class="res-card">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81shT7zM5tL.jpg">
+                        <h4>Grammar in Use</h4>
+                        <span class="res-price">R$ 89,90</span>
+                        <a href="#" class="btn-cta" style="padding: 10px 20px; font-size: 11px;">Ver na Amazon</a>
+                    </div>
+                    <div class="res-card">
+                        <img src="https://m.media-amazon.com/images/I/81-f761mXRL._AC_UF1000,1000_QL80_.jpg">
+                        <h4>Fluent Forever</h4>
+                        <span class="res-price">R$ 59,90</span>
+                        <a href="#" class="btn-cta" style="padding: 10px 20px; font-size: 11px;">Ver na Amazon</a>
+                    </div>
+                    <div class="res-card">
+                        <img src="https://m.media-amazon.com/images/I/41-l8l6V7jL._AC_UF1000,1000_QL80_.jpg">
+                        <h4>Business English</h4>
+                        <span class="res-price">R$ 129,90</span>
+                        <a href="#" class="padding: 10px 20px; font-size: 11px;" class="btn-cta">Ver na Amazon</a>
+                    </div>
+                    <div class="res-card">
+                        <img src="https://m.media-amazon.com/images/I/61S4h2a+JRL._AC_SL1500_.jpg">
+                        <h4>Headset Studio</h4>
+                        <span class="res-price">R$ 199,90</span>
+                        <a href="#" class="btn-cta" style="padding: 10px 20px; font-size: 11px;">Ver na Amazon</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="depoimentos" class="section-padding" style="background: white;">
+        <!-- TESTIMONIALS -->
+        <section id="depoimentos" class="section-padding" style="background: #fff;">
             <div class="container">
-                <div style="text-align: center; margin-bottom: 60px;">
-                    <h2 style="font-size: 2.8rem;">O que dizem os alunos</h2>
+                <div class="section-header">
+                    <span class="badge">Vozes da Escola</span>
+                    <h2>Nossos Alunos</h2>
                 </div>
                 <div class="testimonials-grid">
                     <div class="test-card">
-                        <p class="test-text">"O método da Ruby me deu a confiança para assumir reuniões globais. O foco em Business é impecável."</p>
-                        <div class="user-info"><div class="avatar"></div><div><h4>Marina Silva</h4><p style="font-size: 11px; color: var(--primary);">Diretora de Operações</p></div></div>
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-text">"O método da Ruby English Academy me deu a confiança necessária para assumir reuniões em inglês com a diretoria global da minha empresa."</p>
+                        <div class="user-info">
+                            <div class="user-avatar"></div>
+                            <div>
+                                <h4 style="font-size: 16px;">Marina Silva</h4>
+                                <p style="font-size: 11px; color: var(--primary); font-weight: 700;">Diretora de Operações</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="test-card" style="border-color: var(--primary); border-width: 2px;">
-                        <p class="test-text">"Minha filha adora as aulas. Ela já fala inglês com uma naturalidade que me impressiona todos os dias."</p>
-                        <div class="user-info"><div class="avatar"></div><div><h4>Pedro Santos</h4><p style="font-size: 11px; color: var(--primary);">Pai do Lucas (8 anos)</p></div></div>
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-text">"Minha filha de 8 anos adora as aulas. Ela já fala frases inteiras com uma naturalidade que me impressiona. Um investimento que vale cada centavo."</p>
+                        <div class="user-info">
+                            <div class="user-avatar"></div>
+                            <div>
+                                <h4 style="font-size: 16px;">Pedro Santos</h4>
+                                <p style="font-size: 11px; color: var(--primary); font-weight: 700;">Pai do Lucas (8 anos)</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="test-card">
-                        <p class="test-text">"Graças à mentoria da Isabelle, consegui passar na minha entrevista para uma empresa na Alemanha."</p>
-                        <div class="user-info"><div class="avatar"></div><div><h4>Roberto Almeida</h4><p style="font-size: 11px; color: var(--primary);">Software Engineer</p></div></div>
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-text">"A preparação para entrevistas internacionais da Isabelle é impecável. Consegui minha vaga na Europa em menos de 3 meses de mentoria."</p>
+                        <div class="user-info">
+                            <div class="user-avatar"></div>
+                            <div>
+                                <h4 style="font-size: 16px;">Roberto Almeida</h4>
+                                <p style="font-size: 11px; color: var(--primary); font-weight: 700;">Software Engineer</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="section-padding">
+        <!-- CONTACT -->
+        <section id="contato" class="section-padding contact-section">
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-box">
-                        <h2>Vamos conversar?</h2>
-                        <p style="margin: 20px 0; opacity: 0.8;">Agende sua aula experimental e descubra o plano ideal para você.</p>
-                        <p><strong>WhatsApp:</strong> (11) 93081-1113</p>
-                        <p><strong>Email:</strong> contato@rubyenglish.com</p>
+                        <h2>Vamos elevar seu inglês?</h2>
+                        <p style="margin: 25px 0; opacity: 0.8; font-size: 18px;">Agende uma aula experimental gratuita e descubra o plano personalizado para o seu objetivo.</p>
+                        <div style="display: grid; gap: 20px; margin-top: 40px;">
+                            <p><i class="fab fa-whatsapp" style="margin-right: 15px;"></i> (11) 93081-1113</p>
+                            <p><i class="fas fa-envelope" style="margin-right: 15px;"></i> contato@rubyenglish.com</p>
+                            <p><i class="fas fa-map-marker-alt" style="margin-right: 15px;"></i> Aulas Online | São Paulo, SP</p>
+                        </div>
                     </div>
                     <div class="contact-form">
-                        <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!'); this.reset();">
-                            <input type="text" class="form-input" placeholder="Seu Nome" required>
-                            <input type="text" class="form-input" placeholder="Seu WhatsApp" required>
-                            <textarea class="form-input" rows="4" placeholder="Como podemos te ajudar?"></textarea>
-                            <button type="submit" class="btn-red" style="width: 100%; padding: 18px;">Enviar Mensagem</button>
+                        <h3>Solicitar Orçamento</h3>
+                        <form style="margin-top: 30px;" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Entraremos em contato em breve.'); this.reset();">
+                            <input type="text" class="form-input" placeholder="Seu Nome Completo" required>
+                            <input type="text" class="form-input" placeholder="Seu WhatsApp (com DDD)" required>
+                            <textarea class="form-input" rows="4" placeholder="Qual seu objetivo principal?"></textarea>
+                            <button type="submit" class="btn-cta" style="width: 100%; padding: 20px; font-size: 14px;">Enviar Mensagem agora</button>
                         </form>
                     </div>
                 </div>
@@ -225,8 +394,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3 style="color: white; font-family: 'Prata', serif;">Ruby English Academy</h3>
-                    <p style="margin-top: 20px; opacity: 0.6; font-size: 14px;">Ensino de idiomas com foco em autoridade, carreira e desenvolvimento infantil.</p>
+                    <div class="footer-logo">Ruby English Academy</div>
+                    <p style="opacity: 0.5; font-size: 14px; max-width: 300px;">Ensino de idiomas com autoridade, focado em carreira e desenvolvimento infantil de alto nível.</p>
                     <div class="social-links">
                         <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
@@ -235,38 +404,37 @@
                     </div>
                 </div>
                 <div>
-                    <h4>Navegação</h4>
-                    <ul style="list-style: none; margin-top: 20px; opacity: 0.6; font-size: 14px; display: grid; gap: 10px;">
-                        <li>Sobre</li>
-                        <li>Cursos</li>
-                        <li>Depoimentos</li>
-                        <li>Contato</li>
+                    <h4 style="margin-bottom: 20px;">Navegação</h4>
+                    <ul class="footer-links">
+                        <li><a href="#sobre">A Escola</a></li>
+                        <li><a href="#servicos">Nossos Cursos</a></li>
+                        <li><a href="#depoimentos">Alunos</a></li>
+                        <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Contato</h4>
-                    <p style="margin-top: 20px; opacity: 0.6; font-size: 14px;">São Paulo, SP<br>Aulas Online para todo o mundo.</p>
+                    <h4 style="margin-bottom: 20px;">Informações</h4>
+                    <p style="opacity: 0.5; font-size: 14px;">© 2026 MLee Digital<br>Todos os direitos reservados.</p>
+                    <p style="margin-top: 20px; font-size: 12px; color: var(--primary); font-weight: 700;">Boutique English School</p>
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; opacity: 0.5;">
-                © 2026 MLee Digital | Todos os direitos reservados.
             </div>
         </div>
     </footer>
 
+    <!-- QUIZ MODAL -->
     <div id="quiz-modal">
         <div class="quiz-content">
-            <span style="position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 24px; color: #ccc;" onclick="toggleQuiz(false)">&times;</span>
+            <span class="close-quiz" onclick="toggleQuiz(false)">&times;</span>
             <div id="quiz-step-1">
-                <h2 style="margin-bottom: 30px;">Qual seu objetivo principal?</h2>
-                <div class="quiz-opt" onclick="finishQuiz('Kids')">Inglês para meu filho(a)</div>
-                <div class="quiz-opt" onclick="finishQuiz('Business')">Carreira / Business English</div>
-                <div class="quiz-opt" onclick="finishQuiz('Travel')">Viagens / Conversação</div>
+                <h2 style="margin-bottom: 30px;">Qual seu foco atual?</h2>
+                <div class="quiz-option" onclick="finishQuiz('Kids')">Inglês para meu filho(a)</div>
+                <div class="quiz-option" onclick="finishQuiz('Business')">Inglês para Carreira / Business</div>
+                <div class="quiz-option" onclick="finishQuiz('Travel')">Inglês para Viagens / Lazer</div>
             </div>
             <div id="quiz-result" style="display: none;">
-                <h2 style="margin-bottom: 20px;">Perfil Identificado!</h2>
-                <p id="result-text" style="margin-bottom: 30px; color: #555;"></p>
-                <a id="quiz-wa" href="#" target="_blank" class="btn-red" style="display: inline-block;">Falar com a Teacher no WhatsApp</a>
+                <h2 style="margin-bottom: 20px;">Perfil Encontrado!</h2>
+                <p id="result-text" style="margin-bottom: 30px; color: #666;"></p>
+                <a id="quiz-wa-link" href="#" target="_blank" class="btn-cta" style="display: inline-block; padding: 18px 40px;">Falar com a Teacher no WhatsApp</a>
             </div>
         </div>
     </div>
@@ -274,17 +442,17 @@
     <script>
         function toggleQuiz(show) { 
             document.getElementById('quiz-modal').style.display = show ? 'flex' : 'none'; 
-            if(show) { 
-                document.getElementById('quiz-step-1').style.display = 'block'; 
-                document.getElementById('quiz-result').style.display = 'none'; 
+            if(show) {
+                document.getElementById('quiz-step-1').style.display = 'block';
+                document.getElementById('quiz-result').style.display = 'none';
             }
         }
         function finishQuiz(goal) {
             document.getElementById('quiz-step-1').style.display = 'none';
             document.getElementById('quiz-result').style.display = 'block';
-            document.getElementById('result-text').innerText = `O programa de ${goal} é o ideal para você alcançar seus objetivos com confiança.`;
-            const msg = encodeURIComponent(`Olá Isabelle! Fiz o teste no site e meu perfil deu ${goal}. Quero agendar uma aula experimental!`);
-            document.getElementById('quiz-wa').href = `https://wa.me/5511930811113?text=${msg}`;
+            document.getElementById('result-text').innerText = `O programa de ${goal} na Ruby Academy é exatamente o que você precisa para alcançar sua fluência com autoridade.`;
+            const msg = encodeURIComponent(`Olá Isabelle! Fiz o teste no site e meu foco é ${goal}. Quero agendar uma aula experimental!`);
+            document.getElementById('quiz-wa-link').href = `https://wa.me/5511930811113?text=${msg}`;
         }
     </script>
 </body>
