@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby English Academy | Isabelle Luiza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Prata&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D3614E; 
+            --secondary: #1B263B; 
+            --bg: #FDFBFF;
+            --white: #ffffff;
+            --text: #2D2D2D;
+            --light-bg: #F4F0E8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: 'Prata', serif; color: var(--secondary); line-height: 1.2; }
+        a { text-decoration: none; transition: 0.3s; }
+        .btn-cta { background: var(--primary); color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; display: inline-block; border: none; cursor: pointer; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(211, 97, 78, 0.2); }
+        .badge { background: #FDECEA; color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 15px; }
+        header { background: rgba(255, 255, 255, 0.95); padding: 20px 0; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--secondary); font-family: 'Prata', serif; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--text); font-size: 13px; font-weight: 600; }
+        .section-padding { padding: 100px 0; }
+        .bio-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+        .bio-img { width: 100%; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); }
+        .services-section { background: var(--light-bg); }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .card { background: white; border-radius: 30px; overflow: hidden; transition: 0.3s; }
+        .card-body { padding: 40px; }
+        .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .res-card { background: white; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid #f0f0f0; }
+        .res-card img { height: 160px; object-fit: contain; margin-bottom: 20px; width: 100%; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .test-card { background: #fff; padding: 40px; border-radius: 25px; border: 1px solid #eee; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
+        .contact-box { background: var(--secondary); color: white; padding: 60px; border-radius: 30px; }
+        .contact-form { background: white; padding: 60px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+        .form-input { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 12px; background: #fcfcfc; font-family: inherit; }
+        footer { background: #0F172A; color: white; padding: 80px 0; }
+        .social-links { display: flex; gap: 10px; margin-top: 20px; }
+        .social-btn { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+        #quiz-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .quiz-content { background: white; padding: 40px; border-radius: 30px; max-width: 500px; width: 90%; text-align: center; position: relative; }
+        .quiz-option { width: 100%; padding: 15px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 12px; cursor: pointer; font-weight: 600; }
+        .quiz-option:hover { background: var(--light-bg); border-color: var(--primary); }
+        @media (max-width: 992px) { .bio-grid, .services-grid, .testimonials-grid, .contact-grid { grid-template-columns: 1fr; } .nav-links { display: none; } .resource-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">Ruby English Academy</div>
+            <nav class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Cursos</a>
+                <a href="#depoimentos">Alunos</a>
+                <a href="#contato">Contato</a>
+                <button onclick="toggleQuiz(true)" class="btn-cta" style="padding: 10px 20px; font-size: 12px;">Teste de Nível</button>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="sobre" class="section-padding">
+            <div class="container">
+                <div class="bio-grid">
+                    <div><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Isabelle Luiza" class="bio-img"></div>
+                    <div class="bio-content">
+                        <span class="badge">Autoridade no Ensino</span>
+                        <h2 style="font-size: 3rem; margin-bottom: 20px;">Excelência que Transforma Vidas</h2>
+                        <p style="margin-bottom: 20px; color: #555;">Fundada por Isabelle Luiza, a Ruby Academy une bagagem pedagógica de grandes escolas com um atendimento humano e focado em resultados reais.</p>
+                        <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta">Agendar Aula Grátis</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="servicos" class="section-padding services-section">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800" style="width:100%; height:250px; object-fit:cover;">
+                        <div class="card-body">
+                            <h3>English for Kids</h3>
+                            <p style="margin: 15px 0; color: #666;">Aprendizado lúdico e natural para crianças de 4 a 12 anos.</p>
+                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta" style="width:100%">Saiba Mais</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" style="width:100%; height:250px; object-fit:cover;">
+                        <div class="card-body">
+                            <h3>Adults & Business</h3>
+                            <p style="margin: 15px 0; color: #666;">Inglês estratégico para carreira, viagens e entrevistas.</p>
+                            <a href="https://wa.me/5511930811113" target="_blank" class="btn-cta" style="width:100%">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="depoimentos" class="section-padding">
+            <div class="container">
+                <div class="testimonials-grid">
+                    <div class="test-card"><p>"Método impecável para Business English."</p><strong>- Marina S.</strong></div>
+                    <div class="test-card"><p>"Minha filha evoluiu muito rápido!"</p><strong>- Pedro A.</strong></div>
+                    <div class="test-card"><p>"Passei na entrevista internacional."</p><strong>- Roberto K.</strong></div>
+                </div>
+            </div>
+        </section>
+        <section id="contato" class="section-padding">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-box">
+                        <h2>Vamos conversar?</h2>
+                        <p style="margin: 20px 0;">Agende sua aula e mude seu futuro.</p>
+                        <p>WhatsApp: (11) 93081-1113</p>
+                    </div>
+                    <div class="contact-form">
+                        <form onsubmit="event.preventDefault(); alert('Mensagem enviada! Entraremos em contato em breve.'); this.reset();">
+                            <input type="text" class="form-input" placeholder="Seu Nome" required>
+                            <input type="text" class="form-input" placeholder="Seu WhatsApp" required>
+                            <textarea class="form-input" rows="4" placeholder="Como podemos ajudar?"></textarea>
+                            <button type="submit" class="btn-cta" style="width:100%">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <h3>Ruby English Academy</h3>
+            <div class="social-links">
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5511930811113" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.5; font-size: 12px;">© 2026 MLee Digital</p>
+        </div>
+    </footer>
+    <div id="quiz-modal">
+        <div class="quiz-content">
+            <span style="position:absolute; top:15px; right:20px; cursor:pointer;" onclick="toggleQuiz(false)">&times;</span>
+            <div id="quiz-step-1">
+                <h2 style="margin-bottom:20px;">Qual seu objetivo?</h2>
+                <div class="quiz-option" onclick="nextStep('Kids')">Inglês Kids</div>
+                <div class="quiz-option" onclick="nextStep('Business')">Carreira / Business</div>
+            </div>
+            <div id="quiz-result" style="display:none;">
+                <h2 style="margin-bottom:20px;">Perfil Identificado!</h2>
+                <p id="result-text" style="margin-bottom:20px;"></p>
+                <a id="quiz-wa" href="#" target="_blank" class="btn-cta">Falar com a Teacher</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleQuiz(show) { 
+            document.getElementById('quiz-modal').style.display = show ? 'flex' : 'none'; 
+            if(show) { document.getElementById('quiz-step-1').style.display = 'block'; document.getElementById('quiz-result').style.display = 'none'; }
+        }
+        function nextStep(goal) {
+            document.getElementById('quiz-step-1').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+            document.getElementById('result-text').innerText = `O programa de ${goal} é o ideal para você.`;
+            const msg = encodeURIComponent(`Olá! Fiz o teste no site e meu perfil deu ${goal}. Quero saber mais!`);
+            document.getElementById('quiz-wa').href = `https://wa.me/5511930811113?text=${msg}`;
+        }
+    </script>
+</body>
+</html>
